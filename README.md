@@ -1,5 +1,5 @@
 # ExpenseManagementApp
-Project to manage all monthly and annual expenses and to do analysis on the data
+Project to manage all monthly and annual expenses and to do analysis on the data. Dashboards for analysis are available on Kibana with address - http://localhost:5601
 
 This project consists of 2 parts - 
 	I. An excel reader that would read the file and will push ‘expense’ details in Elastic Search index names ‘expense’. Sample of file is also stored in this repository.
@@ -35,3 +35,5 @@ This project consists of 2 parts -
 4. storeMonthSummary
 	URL - GET http://localhost:8080/finApp/storeMonthSummary?monthDate=august 2018
 	Same as getMonthSummary, only difference is that it also stores data in ‘monthly-summary’ index 
+	
+
