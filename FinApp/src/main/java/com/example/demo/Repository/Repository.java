@@ -76,7 +76,7 @@ public class Repository {
 		expense.setExpenseMonth(expenseMonth);
 		expense.setTimestamp(utility.timestampGenerator(expenseMonth));
 		
-		String index = "newexpense";
+		String index = "expense";
 		Gson gson = new Gson();
 		String json = gson.toJson(expense);
 		IndexRequest indexRequest = new IndexRequest(index, TYPE, "").source(json, XContentType.JSON);
@@ -93,7 +93,7 @@ public class Repository {
 		datamap.put("description", description);
 		datamap.put("amount", amount);
 		datamap.put("timstamp", utility.timestampGenerator(incomeMonth));
-		String index = "newexpense";
+		String index = "income";
 		IndexRequest indexRequest = new IndexRequest(index, TYPE, "").source(datamap);
 		IndexResponse response = restHighLevelClient.index(indexRequest);
 		logger.info(response.toString());
@@ -103,7 +103,7 @@ public class Repository {
 	public String storeMonthlySummary(String monthDate, Map<String,Object> monthSummary) throws IOException {
 		if(validator.validateDate(monthDate)!=null)
 			return validator.validateDate(monthDate);
-		String index = "new-monthly-summary";
+		String index = "monthly-summary";
 		IndexRequest indexRequest = new IndexRequest(index, TYPE, monthDate.toString()).source(monthSummary);
 		IndexResponse response = restHighLevelClient.index(indexRequest);
 		logger.info(response.toString());
